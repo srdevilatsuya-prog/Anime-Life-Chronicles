@@ -1,0 +1,1080 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#9565ff">
+  <title>Anime Life RPG — Chronicles</title>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 128 128'%3E%3Crect width='128' height='128' rx='26' fill='%23151222'/%3E%3Ccircle cx='64' cy='64' r='48' fill='%23261b42' stroke='%239565ff' stroke-width='4'/%3E%3Ctext x='64' y='84' font-size='64' text-anchor='middle' fill='%2354d9f5'%3E%E2%9C%A6%3C/text%3E%3C/svg%3E">
+  <link rel="manifest" href="manifest.json">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:ital,wght@0,500;0,600;0,700;1,700&family=JetBrains+Mono:wght@500;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="app">
+  <aside class="sidebar">
+    <div class="logo">
+      <span class="logo-icon">⚔</span>
+      <div><strong>ANIME LIFE</strong><small>CHRONICLES RPG</small></div>
+    </div>
+
+    <div class="profile-mini">
+      <div class="mini-avatar"><canvas id="miniAvatar" width="44" height="44"></canvas></div>
+      <div class="profile-mini-info">
+        <strong id="sideName">Aventureiro</strong>
+        <small id="sideLevel">Nível 1</small>
+        <span class="mini-title-badge" id="sideTitle">Iniciante</span>
+      </div>
+    </div>
+
+    <nav class="navigation">
+      <button class="nav-btn active" data-page="home">⌂ <span>Início</span></button>
+      <button class="nav-btn" data-page="map">🗺 <span>Mapa 2D (11 Mundos)</span></button>
+      <button class="nav-btn" data-page="classes">🎰 <span>Classes & Stands</span></button>
+      <button class="nav-btn" data-page="dojo">🏯 <span>Dojo de Treino</span></button>
+      <button class="nav-btn" data-page="battle">⚔ <span>Combate & Chefes</span></button>
+      <button class="nav-btn" data-page="character">♙ <span>Personagem</span></button>
+      <button class="nav-btn" data-page="quests">☑ <span>Missões & Foco</span></button>
+      <button class="nav-btn" data-page="skills">✧ <span>Habilidades</span></button>
+      <button class="nav-btn" data-page="inventory">▣ <span>Inventário & Forja</span></button>
+      <button class="nav-btn" data-page="anime">◈ <span>Universos Anime</span></button>
+      <button class="nav-btn" data-page="achievements">♛ <span>Conquistas</span></button>
+      <button class="nav-btn" data-page="settings">⚙ <span>Configurações</span></button>
+    </nav>
+
+    <div class="sidebar-bottom">
+      <div><span class="online-dot"></span> SISTEMA ONLINE</div>
+      <small id="sidebarCalendar">Dia 1 • ☀️ Dia</small>
+    </div>
+  </aside>
+
+  <main class="main-content">
+    <header class="topbar">
+      <div>
+        <small class="eyebrow" id="topEyebrow">SUA JORNADA COMEÇA AGORA</small>
+        <h1 id="pageTitle">Painel do aventureiro</h1>
+      </div>
+      <div class="top-resources">
+        <button class="resource resource-btn hidden" id="installPwaBtn" title="Instalar Anime Life RPG no dispositivo">
+          📲 <span>Instalar App</span>
+        </button>
+        <button class="resource resource-btn" id="quickThemeBtn" title="Alternar Tema Visual de Universo Anime">
+          🎨 <span id="activeThemeBadge">Shonen</span>
+        </button>
+        <button class="resource resource-btn" id="timeCycleBtn" title="Alternar horário (Automático / Manhã / Tarde / Noite)">
+          <span id="timeIcon">☀️</span> <span id="timeLabel">Dia</span>
+        </button>
+        <button class="resource resource-btn" id="soundToggleBtn" title="Ativar/Desativar som">
+          <span id="soundIcon">🔊</span>
+        </button>
+        <div class="resource" title="Giros de Classe disponíveis">🎰 <span id="topSpins">3</span></div>
+        <div class="resource" title="Energia de Combate">⚡ <span id="topEnergy">50/50</span></div>
+        <div class="resource" title="Moedas">🪙 <span id="topCoins">0</span></div>
+        <div class="resource" title="Gemas">💎 <span id="topGems">0</span></div>
+      </div>
+    </header>
+
+    <!-- INÍCIO -->
+    <section class="page active" id="page-home">
+      <div class="welcome-banner">
+        <div>
+          <span class="tag" id="homeBannerTag">SISTEMA DE PROGRESSÃO • DIA 1</span>
+          <h2>Desperte seu Stand.<br>Domine o Multiverso.</h2>
+          <p>Transforme sua rotina real em poder: complete hábitos e sessões de foco, desperte Stands de JoJo, treine no Dojo e explore 11 mundos de anime.</p>
+          <div class="banner-actions">
+            <button class="primary-btn" data-goto="classes">🎰 Roleta de Classes & Stands →</button>
+            <button class="secondary-btn" data-goto="quests">Missões & Foco ⏱</button>
+            <button class="secondary-btn" data-goto="map">Explorar 11 Mundos 🗺</button>
+            <button class="secondary-btn" data-goto="dojo">Treinar no Dojo 🏯</button>
+            <button class="secondary-btn" data-goto="battle">Combate & Chefes ⚔</button>
+          </div>
+        </div>
+        <div class="banner-symbol">ゴゴ</div>
+      </div>
+
+      <div class="progression-hint-bar" id="homeProgressionHint">💡 <strong>Próximo Passo:</strong> Conclua uma missão real, use seus 3 Giros na Roleta de Classes ou explore a Vila da Folha!</div>
+
+      <div class="stats-grid">
+        <div class="stat-card"><span>⚡ EXPERIÊNCIA TOTAL</span><strong id="homeXP">0 XP</strong><small id="homeXPSub">Experiência acumulada</small></div>
+        <div class="stat-card"><span>🏆 NÍVEL</span><strong id="homeLevel">1</strong><small id="homePointsSub">Seu nível atual</small></div>
+        <div class="stat-card"><span>☑ MISSÕES</span><strong id="homeCompleted">0</strong><small id="homeBattlesSub">Missões concluídas</small></div>
+        <div class="stat-card"><span>🔥 SEQUÊNCIA</span><strong id="homeStreak">0 dias</strong><small id="homeBuffSub">Dias com atividades</small></div>
+      </div>
+
+      <div class="content-grid">
+        <div class="panel">
+          <div class="panel-heading">
+            <div><span class="eyebrow">PROGRESSÃO</span><h3>Experiência e Status</h3></div>
+            <span class="level-label" id="levelLabel">NÍVEL 1</span>
+          </div>
+          <div class="xp-info"><span id="xpCurrent">0 XP</span><span id="xpNeeded">100 XP</span></div>
+          <div class="progress-track"><div class="progress-fill" id="xpBar"></div></div>
+          <p class="muted" id="xpMessage">Continue completando missões e treinando no Dojo para evoluir.</p>
+
+          <div class="mini-stats-bars">
+            <div class="mini-bar-row">
+              <span>❤️ Vida (HP)</span>
+              <span id="homeHpText">100 / 100</span>
+            </div>
+            <div class="progress-track hp-track"><div class="progress-fill hp-fill" id="homeHpBar"></div></div>
+            <div class="mini-bar-row">
+              <span>💧 Energia (EN)</span>
+              <span id="homeMpText">50 / 50</span>
+            </div>
+            <div class="progress-track mp-track"><div class="progress-fill mp-fill" id="homeMpBar"></div></div>
+          </div>
+
+          <div class="home-attributes-strip" id="homeAttributesStrip"></div>
+        </div>
+
+        <div class="panel">
+          <div class="panel-heading">
+            <div><span class="eyebrow">AVENTUREIRO</span><h3>Seu personagem, Classe & Stand</h3></div>
+            <button class="text-btn" data-goto="character">Personalizar →</button>
+          </div>
+          <div class="preview-body">
+            <div class="avatar-stage">
+              <canvas id="homeAvatar" width="160" height="160"></canvas>
+            </div>
+            <div class="home-char-details">
+              <h3 id="homeCharacterName">Aventureiro</h3>
+              <p class="muted" id="homeCharacterTitle">Guerreiro em treinamento</p>
+              <span class="tag" id="homeCharacterClass">CLASSE: AVENTUREIRO LIVRE</span>
+              <div class="home-equipped-badges" id="homeEquippedBadges"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="content-grid">
+        <div class="panel">
+          <div class="panel-heading">
+            <div><span class="eyebrow">OBJETIVOS DE HOJE</span><h3>Missões pendentes</h3></div>
+            <button class="text-btn" data-goto="quests">Ver todas →</button>
+          </div>
+          <div class="daily-progress-wrap">
+            <div class="xp-info"><span id="homeDailyProgressText">Progresso diário: 0/7</span><span id="homeDailyPercent">0%</span></div>
+            <div class="progress-track"><div class="progress-fill" id="homeDailyBar"></div></div>
+          </div>
+          <div id="homeQuestList" class="quest-list"></div>
+        </div>
+
+        <div class="panel map-home-panel">
+          <div class="panel-heading">
+            <div><span class="eyebrow">EXPLORAÇÃO & MULTIVERSO</span><h3>Status do Mundo</h3></div>
+            <button class="text-btn" data-goto="map">Ir ao Mapa →</button>
+          </div>
+          <p class="muted">Local atual: <strong id="homeZone">Vila Inicial</strong></p>
+          <div class="world-status-cards" id="homeWorldCards"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- MAPA 2D (11 MUNDOS) -->
+    <section class="page" id="page-map">
+      <div class="section-intro">
+        <span class="eyebrow">MUNDO ABERTO 2D • 11 REGIÕES DE ANIME COM IDENTIDADE PRÓPRIA</span>
+        <h2>Mapa do Multiverso</h2>
+        <p>Explore 11 mundos exclusivos (de Konoha e Cairo Bizarro até Central City, Shiganshina e a Torre Celestial), fale com Mestres e enfrente Chefes!</p>
+      </div>
+
+      <div class="panel map-panel">
+        <div class="panel-heading map-header-bar">
+          <div>
+            <span class="eyebrow">LOCALIZAÇÃO ATUAL</span>
+            <h3 id="zoneName">Vila Inicial</h3>
+          </div>
+          <div class="map-zone-selector" id="zoneTravelButtons"></div>
+        </div>
+
+        <div class="map-frame">
+          <canvas id="gameMap" width="960" height="576" tabindex="0"></canvas>
+        </div>
+
+        <div class="map-actions">
+          <button class="primary-btn" id="interactBtn">E • Interagir</button>
+          <button class="secondary-btn" id="mapSkillBtn">Q • Invocar Aura / Stand</button>
+          <button class="secondary-btn" id="mapQuestBtn">💬 Falar com Mestre</button>
+          <button class="secondary-btn" id="mapDojoBtn">🏯 Entrar no Meu Dojo</button>
+          <button class="secondary-btn" id="mapBattleBtn">⚔ Procurar Inimigo</button>
+          <button class="secondary-btn" id="mapHealBtn">🍙 Descansar (100% HP/EN)</button>
+        </div>
+
+        <div id="mapMessage" class="map-message">Explore o mapa! Inimigos patrulham os caminhos e os Mestres têm diálogos e missões próprias.</div>
+
+        <div class="map-controls">
+          <div><strong>Movimentação e Câmera</strong><p>WASD, Setas ou clique/toque no mapa. O Mini-mapa no canto superior direito mostra toda a região.</p></div>
+          <div><strong>Interação (Tecla E)</strong><p>Abre o diálogo com Mestres, coleta baús dourados, entra no Dojo, usa portais ou inicia combate.</p></div>
+          <div><strong>11 Mundos & Segredos</strong><p>Desbloqueie novos mundos subindo de nível. Cada região tem música ambiente, baú exclusivo e Chefe!</p></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ROLETA DE CLASSES & SISTEMA DE STANDS (JOJO) -->
+    <section class="page" id="page-classes">
+      <div class="section-intro">
+        <span class="eyebrow">SISTEMA DE RARIDADES • ROLETA DE CLASSES & DESPERTAR DE STANDS (JOJO)</span>
+        <h2>🎰 Classes & Stands Bizarros</h2>
+        <p>Gire a Roleta para obter Classes de raridades Comum até Secreta, e use a Flecha Requiem para despertar Stands lendários de JoJo's Bizarre Adventure!</p>
+      </div>
+
+      <!-- PAINEL DA ROLETA DE CLASSES -->
+      <div class="panel roulette-panel">
+        <div class="panel-heading">
+          <div>
+            <span class="eyebrow">ROLETA DO DESTINO (7 RARIDADES)</span>
+            <h3>🎰 Roleta de Classes de Combate</h3>
+          </div>
+          <div class="roulette-counters">
+            <span class="rarity-badge rarity-legendary" id="classSpinsBadge">🎰 3 Giros Grátis</span>
+            <span class="rarity-badge rarity-epic" id="unlockedClassesCountBadge">1/16 Classes</span>
+          </div>
+        </div>
+
+        <div class="odds-strip" id="classOddsBar">
+          <span class="rarity-badge rarity-common">Comum 34%</span>
+          <span class="rarity-badge rarity-uncommon">Incomum 24%</span>
+          <span class="rarity-badge rarity-rare">Rara 18%</span>
+          <span class="rarity-badge rarity-epic">Épica 11%</span>
+          <span class="rarity-badge rarity-legendary">Lendária 7%</span>
+          <span class="rarity-badge rarity-mythic">Mítica 4.5%</span>
+          <span class="rarity-badge rarity-secret">Secreta 1.5%</span>
+        </div>
+
+        <div class="roulette-viewport" id="classRouletteViewport">
+          <div class="roulette-pointer">▼</div>
+          <div class="roulette-track" id="classRouletteTrack"></div>
+        </div>
+
+        <div class="roulette-result-banner" id="classRouletteResult">
+          Clique em Girar Roleta para sortear uma nova Classe com buffs exclusivos!
+        </div>
+
+        <div class="roulette-actions">
+          <button class="primary-btn" id="spinClassTicketBtn">🎰 Girar com Giro Grátis (1 Giro)</button>
+          <button class="secondary-btn" id="spinClassCoinsBtn">🪙 Girar com Moedas (80 🪙)</button>
+          <button class="ultimate-btn" id="spinClassGemsBtn">💎 Giro da Sorte Rara+ (3 💎)</button>
+        </div>
+      </div>
+
+      <div class="content-grid">
+        <div class="panel">
+          <div class="panel-heading">
+            <div><span class="eyebrow">CLASSE EQUIPADA NO PERFIL</span><h3>Sua Classe Atual & Buffs</h3></div>
+            <span class="tag" id="activeClassRarityTag">COMUM</span>
+          </div>
+          <div id="activeClassCard"></div>
+        </div>
+
+        <div class="panel">
+          <div class="panel-heading">
+            <div><span class="eyebrow">REGISTRO DA SORTE</span><h3>Histórico de Giros Recentes</h3></div>
+            <span class="tag" id="rollHistoryCountTag">0 GIROS</span>
+          </div>
+          <div class="history-list" id="classHistoryList"></div>
+        </div>
+      </div>
+
+      <div class="panel">
+        <div class="panel-heading">
+          <div>
+            <span class="eyebrow">CATÁLOGO DE CLASSES E BUFFS</span>
+            <h3>Todas as Classes Disponíveis (Clique para Equipar)</h3>
+          </div>
+          <span class="tag">COLEÇÃO PERMANENTE</span>
+        </div>
+        <div id="unlockedClassesGrid" class="skills-grid"></div>
+      </div>
+
+      <!-- SISTEMA DE STANDS (JOJO'S BIZARRE ADVENTURE) -->
+      <div class="panel stand-hero-panel">
+        <div class="panel-heading">
+          <div>
+            <span class="eyebrow">JOJO'S BIZARRE ADVENTURE • MANIFESTAÇÃO DA ALMA</span>
+            <h3>👻 Despertar de Stands (Flecha Requiem)</h3>
+          </div>
+          <span class="rarity-badge rarity-mythic" id="standArrowsBadge">🏹 1 Flecha de Stand</span>
+        </div>
+
+        <div class="stand-showcase-box" id="activeStandCard"></div>
+
+        <div class="roulette-actions" style="margin-top:16px;">
+          <button class="ultimate-btn" id="standAwakenBtn">🏹 Despertar Stand com Flecha (1 Flecha)</button>
+          <button class="primary-btn" id="standCoinAwakenBtn">🪙 Despertar Stand (120 🪙 + 2 💎)</button>
+        </div>
+      </div>
+
+      <div class="panel">
+        <div class="panel-heading">
+          <div>
+            <span class="eyebrow">ENCICLOPÉDIA BIZARRA</span>
+            <h3>Stands Disponíveis, Raridades & Habilidades Únicas</h3>
+          </div>
+          <span class="tag">EQUIPE SEU STAND FAVORITO</span>
+        </div>
+        <div id="standsGrid" class="skills-grid"></div>
+      </div>
+    </section>
+
+    <!-- MEU DOJO (TREINAMENTO ATIVO DE ATRIBUTOS, DESAFIOS E BASE) -->
+    <section class="page" id="page-dojo">
+      <div class="section-intro">
+        <span class="eyebrow">CENTRO DE TREINAMENTO DE ATRIBUTOS, MESTRES E BASE PESSOAL</span>
+        <h2>🏯 Dojo Dimensional de Treinamento</h2>
+        <p>Treine Força, Defesa, Velocidade, Energia e Habilidades, golpeie alvos de treinamento, cumpra desafios dos Mestres Treinadores e evolua as instalações do seu Dojo!</p>
+      </div>
+
+      <div class="panel">
+        <div class="panel-heading">
+          <div>
+            <span class="eyebrow">INTERIOR INTERATIVO DO DOJO</span>
+            <h3 id="dojoTitleHeading">Santuário do Aventureiro (Nível 1)</h3>
+          </div>
+          <div class="banner-actions">
+            <button class="ultimate-btn" id="dojoStrikeTargetBtn">🎯 Golpear Alvo de Treinamento!</button>
+            <button class="primary-btn" id="claimDojoRewardBtn">🎁 Coletar Treino Diário do Dojo</button>
+            <button class="secondary-btn" data-goto="map">⬅ Voltar ao Mapa</button>
+          </div>
+        </div>
+
+        <div class="battle-canvas-wrap">
+          <canvas id="dojoCanvas" width="840" height="360" title="Clique nos alvos de treino para golpear!"></canvas>
+        </div>
+
+        <div class="quest-summary" id="dojoStatsSummary"></div>
+      </div>
+
+      <!-- TREINAMENTO ESPECÍFICO DE ATRIBUTOS -->
+      <div class="panel">
+        <div class="panel-heading">
+          <div>
+            <span class="eyebrow">EVOLUÇÃO ATIVA E EQUILIBRADA DE ATRIBUTOS</span>
+            <h3>🥋 Treinamentos do Dojo (Força, Defesa, Velocidade, Energia e Poderes)</h3>
+          </div>
+          <div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap;">
+            <span class="rarity-badge rarity-epic" id="dojoEnergyBadge">⚡ Sessões Hoje: 0/5</span>
+            <button class="secondary-btn" id="dojoRefillEnergyBtn" style="padding:6px 12px;font-size:14px;">🍙 Recuperar Fôlego (25 🪙)</button>
+          </div>
+        </div>
+        <div id="dojoTrainingGrid" class="skills-grid"></div>
+      </div>
+
+      <!-- MESTRES TREINADORES & DESAFIOS DO DOJO -->
+      <div class="panel">
+        <div class="panel-heading">
+          <div>
+            <span class="eyebrow">NPCs TREINADORES & DESAFIOS ESPECIAIS</span>
+            <h3>🧙 Missões de Treinamento do Dojo</h3>
+          </div>
+          <span class="tag">RECOMPENSAS E GIROS</span>
+        </div>
+        <div id="dojoTrainersList" class="quest-list"></div>
+      </div>
+
+      <!-- PLANTAÇÃO & ALQUIMIA ESPIRITUAL NO PÁTIO DO DOJO -->
+      <div class="panel">
+        <div class="panel-heading">
+          <div>
+            <h3>🌿 Pátio do Dojo: Plantação & Alquimia</h3>
+            <small class="muted">Suas ervas crescem automaticamente a cada minuto focado no Pomodoro e hábito concluído!</small>
+          </div>
+          <span class="rarity-badge rarity-legendary" id="herbInventoryBadge">🌱 0 Ervas no Estoque</span>
+        </div>
+
+        <div class="herb-stock-bar" id="herbStockBar"></div>
+
+        <h4 style="margin:14px 0 8px;">🌱 Canteiros de Cultivo Espiritual (4 Slots)</h4>
+        <div id="dojoGardenGrid" class="skills-grid"></div>
+
+        <h4 style="margin:18px 0 8px;">⚗️ Caldeirão de Alquimia (Sintetizar Poções Táticas)</h4>
+        <div id="alchemyRecipesGrid" class="skills-grid"></div>
+      </div>
+
+      <div class="panel">
+        <div class="panel-heading">
+          <div>
+            <span class="eyebrow">EXPANSÃO DA BASE (+LIMITE DIÁRIO DE TREINO)</span>
+            <h3>Instalações e Móveis do Dojo</h3>
+          </div>
+          <span class="tag">BÔNUS PERMANENTES</span>
+        </div>
+        <div id="dojoUpgradesList" class="skills-grid"></div>
+      </div>
+    </section>
+
+    <!-- COMBATE POR TURNOS & CHEFES MULTI-FASE -->
+    <section class="page" id="page-battle">
+      <div class="section-intro">
+        <span class="eyebrow">SISTEMA DE BATALHA ANIMADO • STANDS, CRÍTICOS E CHEFES DE 2 FASES</span>
+        <h2>Arena do Multiverso & Chefes</h2>
+        <p>Enfrente inimigos e Chefes com múltiplas fases, invoque seu Stand em batalha, dispare habilidades animadas com indicadores de dano e conquiste drops raros!</p>
+      </div>
+
+      <!-- SELETOR RÁPIDO DE CHEFES DO MULTIVERSO -->
+      <div class="panel">
+        <div class="panel-heading">
+          <div>
+            <span class="eyebrow">DESAFIOS DE ALTO NÍVEL (2 FASES DE COMBATE + DROPS RAROS)</span>
+            <h3>👑 Galeria de Chefes do Multiverso</h3>
+          </div>
+          <span class="tag" id="bossDefeatedCountTag">0 CHEFES DERROTADOS</span>
+        </div>
+        <div class="boss-roster-grid" id="bossQuickSelectBar"></div>
+      </div>
+
+      <!-- MASMORRAS E RAIDS POR ONDAS -->
+      <div class="panel">
+        <div class="panel-heading">
+          <div>
+            <h3>🏰 Masmorras & Raids por Ondas</h3>
+            <small class="muted">Enfrente 3 ondas sucessivas de inimigos para conquistar materiais raros de Forja!</small>
+          </div>
+          <span class="rarity-badge rarity-mythic" id="dungeonActiveStatusTag">MODO LIVRE</span>
+        </div>
+        <div id="dungeonsGrid" class="boss-roster-grid"></div>
+      </div>
+
+      <div class="battle-setup-bar panel">
+        <div class="battle-select-group">
+          <label for="battleEnemySelect" class="field-label inline-label">Oponente:</label>
+          <select id="battleEnemySelect"></select>
+        </div>
+        <div class="battle-select-group">
+          <label for="battleDifficultySelect" class="field-label inline-label">Dificuldade:</label>
+          <select id="battleDifficultySelect">
+            <option value="normal">Normal (100% Status • 1x Recompensa)</option>
+            <option value="hard">Difícil (140% Status • 1.5x Recompensa)</option>
+            <option value="boss">Lendário / Chefe (200% Status • 2.5x Recompensa)</option>
+          </select>
+        </div>
+        <button class="primary-btn" id="startBattleBtn">⚔ Iniciar Batalha</button>
+      </div>
+
+      <div class="panel battle-arena-panel">
+        <div class="boss-phase-banner hidden" id="bossPhaseBanner">⚠️ CHEFE EM FASE 2: AURA DESPERTA ATIVADA!</div>
+
+        <div class="battle-hud">
+          <div class="fighter-card player-fighter">
+            <div class="fighter-header">
+              <strong id="battlePlayerName">Aventureiro</strong>
+              <span class="tag" id="battlePlayerLvl">Nv. 1</span>
+            </div>
+            <div class="xp-info"><span>❤️ HP</span><span id="battlePlayerHp">100/100</span></div>
+            <div class="progress-track hp-track"><div class="progress-fill hp-fill" id="battlePlayerHpBar"></div></div>
+            <div class="xp-info"><span>💧 Energia</span><span id="battlePlayerMp">50/50</span></div>
+            <div class="progress-track mp-track"><div class="progress-fill mp-fill" id="battlePlayerMpBar"></div></div>
+            <div class="xp-info"><span>🔥 Despertar (Ultimate)</span><span id="battleRageText">0%</span></div>
+            <div class="progress-track rage-track"><div class="progress-fill rage-fill" id="battleRageBar"></div></div>
+            <div class="status-badges-row" id="playerStatusBadges"></div>
+          </div>
+
+          <div class="vs-badge">VS</div>
+
+          <div class="fighter-card enemy-fighter" id="enemyFighterCard">
+            <div class="fighter-header">
+              <strong id="battleEnemyName">Ninja Renegado</strong>
+              <span class="tag" id="battleEnemyTag">Naruto</span>
+            </div>
+            <div class="xp-info"><span id="battleEnemyHpLabel">❤️ HP Inimigo</span><span id="battleEnemyHp">85/85</span></div>
+            <div class="progress-track enemy-hp-track"><div class="progress-fill enemy-hp-fill" id="battleEnemyHpBar"></div></div>
+            <div class="xp-info"><span id="battleEnemyDesc">Oponente em guarda</span><span id="battleTurnIndicator">Turno 1</span></div>
+            <div class="status-badges-row" id="enemyStatusBadges"></div>
+          </div>
+        </div>
+
+        <div class="battle-canvas-wrap">
+          <canvas id="battleCanvas" width="800" height="320"></canvas>
+        </div>
+
+        <div class="battle-controls" id="battleControls">
+          <button class="primary-btn battle-act-btn" id="btnAttack">🗡️ Ataque Básico</button>
+          <button class="stand-btn battle-act-btn" id="btnSummonStand">👻 Poder do Stand</button>
+          <button class="ultimate-btn battle-act-btn" id="btnUltimate" disabled>🔥 Despertar (100%)</button>
+          <button class="secondary-btn battle-act-btn" id="btnDefend">🛡️ Defender (+EN)</button>
+          <button class="secondary-btn battle-act-btn" id="btnUseItem">🧪 Usar Item</button>
+          <button class="danger-btn battle-act-btn" id="btnFlee">🏃 Reiniciar</button>
+        </div>
+
+        <div class="battle-skills-bar" id="battleSkillsBar"></div>
+        <div class="battle-items-bar hidden" id="battleItemsBar"></div>
+
+        <div class="battle-log" id="battleLog">
+          <p>Escolha um oponente acima ou encontre um inimigo patrulhando no Mapa 2D!</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- PERSONAGEM -->
+    <section class="page" id="page-character">
+      <div class="section-intro">
+        <span class="eyebrow">PERSONALIZAÇÃO AVANÇADA EM TEMPO REAL, CLASSE, STAND E ATRIBUTOS</span>
+        <h2>Crie e evolua seu personagem</h2>
+        <p>Personalize penteados de anime, trajes escolares, casuais, de combate e lendários, acessórios, Stand espiritual e distribua pontos de atributo!</p>
+      </div>
+
+      <div class="customization-layout">
+        <div class="panel character-display">
+          <div class="avatar-stage large-stage">
+            <canvas id="customAvatar" width="320" height="320" title="Clique para girar"></canvas>
+          </div>
+          <div class="preview-actions">
+            <button class="secondary-btn" id="turnBtn">↻ Girar</button>
+            <button class="secondary-btn" id="walkBtn">⏸ Parar</button>
+            <button class="secondary-btn" data-goto="classes">🎰 Roleta de Classes & Stands</button>
+          </div>
+          <h2 id="previewName">Aventureiro</h2>
+          <span class="tag" id="previewTitleTag">AVENTUREIRO</span>
+
+          <div class="char-attributes-box">
+            <div class="panel-heading">
+              <h3>Atributos de Combate</h3>
+              <span class="tag" id="statPointsBadge">0 Pontos disponíveis</span>
+            </div>
+            <div id="attributesList" class="attributes-list"></div>
+          </div>
+        </div>
+
+        <div class="panel">
+          <h3>Identidade, Classe, Stand e Aparência</h3>
+
+          <label class="field-label">🎭 Personagens Oficiais dos Animes (Clique para aplicar o visual fiel)</label>
+          <div class="anime-presets-bar" id="animePresetsBar">
+            <button type="button" class="secondary-btn preset-char-btn" data-preset="jotaro">⭐ Jotaro Kujo</button>
+            <button type="button" class="secondary-btn preset-char-btn" data-preset="dio">🌍 DIO</button>
+            <button type="button" class="secondary-btn preset-char-btn" data-preset="giorno">🐞 Giorno</button>
+            <button type="button" class="secondary-btn preset-char-btn" data-preset="goku">🐉 Son Goku</button>
+            <button type="button" class="secondary-btn preset-char-btn" data-preset="naruto">🍥 Naruto</button>
+            <button type="button" class="secondary-btn preset-char-btn" data-preset="luffy">🏴‍☠️ Luffy</button>
+            <button type="button" class="secondary-btn preset-char-btn" data-preset="gojo">🤞 Satoru Gojo</button>
+            <button type="button" class="secondary-btn preset-char-btn" data-preset="tanjiro">🗡️ Tanjiro</button>
+            <button type="button" class="secondary-btn preset-char-btn" data-preset="ichigo">🌙 Ichigo</button>
+            <button type="button" class="secondary-btn preset-char-btn" data-preset="sukuna">👹 Sukuna</button>
+            <button type="button" class="secondary-btn preset-char-btn" data-preset="edward">⚗️ Edward Elric</button>
+            <button type="button" class="secondary-btn preset-char-btn" data-preset="levi">⚔️ Capitão Levi</button>
+            <button type="button" class="secondary-btn preset-char-btn" data-preset="killua">⚡ Killua</button>
+          </div>
+
+          <label class="field-label" for="characterName">Nome do personagem</label>
+          <input id="characterName" maxlength="20" placeholder="Digite seu nome">
+
+          <div class="form-two-cols">
+            <div>
+              <label class="field-label" for="characterClassSelect">Classe Equipada</label>
+              <select id="characterClassSelect"></select>
+            </div>
+            <div>
+              <label class="field-label" for="characterStandSelect">Stand Equipado (JoJo)</label>
+              <select id="characterStandSelect"></select>
+            </div>
+          </div>
+          <small class="muted" id="classDetailHint" style="display:block;margin-top:5px;"></small>
+
+          <div class="form-two-cols">
+            <div>
+              <label class="field-label" for="characterTitle">Título equipado</label>
+              <select id="characterTitle"></select>
+            </div>
+            <div>
+              <label class="field-label" for="characterCompanion">Companheiro 2D (Mapa/Combate)</label>
+              <select id="characterCompanion"></select>
+            </div>
+          </div>
+
+          <div class="form-two-cols">
+            <div>
+              <label class="field-label" for="hairStyle">Penteado de Anime (12 Estilos)</label>
+              <select id="hairStyle">
+                <option value="spiky">Espetado Shonen (Protagonista)</option>
+                <option value="short">Curto Militar / Ninja</option>
+                <option value="long">Longo Espiritual (Samurai)</option>
+                <option value="messy">Desarrumado Rebelde</option>
+                <option value="ponytail">Rabo de Cavalo (Hashira)</option>
+                <option value="twin">Maria-Chiquinha / Duplo</option>
+                <option value="pompadour">Topete Bizarro (Josuke) [Raro]</option>
+                <option value="jotaro_cap">Quepe Fundido (Jotaro) [Épico]</option>
+                <option value="giorno_rolls">Cachos Dourados (Giorno) [Épico]</option>
+                <option value="super_spiky">Super Aura Espetada (Saiyajin) [Lendário]</option>
+                <option value="bowl">Corte Tigela (Fera Verde) [Incomum]</option>
+                <option value="cursed_fade">Franja Feiticeiro (Jujutsu) [Raro]</option>
+              </select>
+            </div>
+            <div>
+              <label class="field-label" for="outfitStyle">Modelo de Roupa & Raridade (10 Trajes)</label>
+              <select id="outfitStyle">
+                <option value="classic">[Comum] Túnica de Aventureiro</option>
+                <option value="casual">[Comum] Moletom Urbano Casual</option>
+                <option value="school">[Incomum] Uniforme Escolar de Tóquio</option>
+                <option value="ninja">[Rara] Colete Tático Shinobi</option>
+                <option value="gi">[Rara] Gi de Combate Marcial</option>
+                <option value="haori">[Épica] Haori de Caçador de Onis</option>
+                <option value="coat">[Épica] Casaco de Capitão Shinigami</option>
+                <option value="jojo_coat">[Lendária] Sobretudo Bizarro (Jotaro)</option>
+                <option value="akatsuki">[Lendária] Manto das Nuvens Vermelhas</option>
+                <option value="cosmic_armor">[Mítica] Armadura Cósmica Divina</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-two-cols">
+            <div>
+              <label class="field-label" for="accessoryStyle">Acessório & Raridade (10 Opções)</label>
+              <select id="accessoryStyle">
+                <option value="none">Nenhum Acessório</option>
+                <option value="headband">[Comum] Bandana Ninja</option>
+                <option value="glasses">[Incomum] Óculos Escuros / Scouter</option>
+                <option value="earrings">[Rara] Brincos Hanafuda / Potara</option>
+                <option value="strawhat">[Rara] Chapéu de Palha Pirata</option>
+                <option value="scarf">[Épica] Cachecol de Dragão</option>
+                <option value="mask">[Épica] Máscara Anbu / Hollow</option>
+                <option value="jojo_hat">[Lendária] Chapéu Bizarro Dourado</option>
+                <option value="cape">[Lendária] Capa Real de Herói</option>
+                <option value="halo">[Mítica] Coroa / Auréola Divina</option>
+              </select>
+            </div>
+            <div>
+              <label class="field-label" for="hairColor">Cor do cabelo</label>
+              <input type="color" id="hairColor" value="#29213e">
+            </div>
+          </div>
+
+          <label class="field-label">Cores Rápidas de Cabelo Anime</label>
+          <div class="color-Presets-row" id="hairColorPresets">
+            <button type="button" class="color-swatch" data-target="hairColor" data-color="#1a162b" style="background:#1a162b" title="Preto Obsidiana"></button>
+            <button type="button" class="color-swatch" data-target="hairColor" data-color="#f6c453" style="background:#f6c453" title="Dourado Super Saiyajin / Giorno"></button>
+            <button type="button" class="color-swatch" data-target="hairColor" data-color="#e2e8f0" style="background:#e2e8f0" title="Prata / Branco Gojo"></button>
+            <button type="button" class="color-swatch" data-target="hairColor" data-color="#ef4444" style="background:#ef4444" title="Carmesim Shonen"></button>
+            <button type="button" class="color-swatch" data-target="hairColor" data-color="#ec4899" style="background:#ec4899" title="Rosa Sakura / Diavolo"></button>
+            <button type="button" class="color-swatch" data-target="hairColor" data-color="#38bdf8" style="background:#38bdf8" title="Azul Deus Super"></button>
+            <button type="button" class="color-swatch" data-target="hairColor" data-color="#22c55e" style="background:#22c55e" title="Verde Esmeralda"></button>
+            <button type="button" class="color-swatch" data-target="hairColor" data-color="#a855f7" style="background:#a855f7" title="Roxo Dimensional"></button>
+          </div>
+
+          <div class="form-three-cols">
+            <div>
+              <label class="field-label" for="skinColor">Cor da pele</label>
+              <input type="color" id="skinColor" value="#e9b995">
+            </div>
+            <div>
+              <label class="field-label" for="eyeColor">Cor dos olhos</label>
+              <input type="color" id="eyeColor" value="#55c8ff">
+            </div>
+            <div>
+              <label class="field-label" for="outfitColor">Cor da roupa</label>
+              <input type="color" id="outfitColor" value="#7047dc">
+            </div>
+          </div>
+
+          <button class="primary-btn full-btn" id="saveCharacter">Salvar personagem</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- MISSÕES & FOCO POMODORO -->
+    <section class="page" id="page-quests">
+      <div class="section-intro">
+        <span class="eyebrow">CENTRAL DE MISSÕES, CRONÔMETRO DE FOCO E CONSISTÊNCIA</span>
+        <h2>Missões & Modo Foco</h2>
+        <p>Use o Cronômetro de Foco (Pomodoro) para ganhar +30% de XP e Moedas nas suas tarefas reais e acompanhe seu calendário de consistência!</p>
+      </div>
+
+      <div class="quest-summary">
+        <div><strong id="questDone">0</strong><small>Concluídas hoje</small></div>
+        <div><strong id="questRemaining">0</strong><small>Pendentes</small></div>
+        <div><strong id="questTotal">0</strong><small>Total de hoje</small></div>
+        <div><strong id="questBuffText">+0%</strong><small>Bônus Determinação</small></div>
+      </div>
+
+      <!-- CRONÔMETRO DE FOCO (POMODORO) -->
+      <div class="panel focus-timer-panel" id="focusTimerPanel">
+        <div class="panel-heading">
+          <div>
+            <span class="eyebrow">TREINAMENTO DE CONCENTRAÇÃO REAL</span>
+            <h3>⏱ Cronômetro de Foco (Pomodoro RPG)</h3>
+          </div>
+          <span class="tag" id="focusBonusBadge">+30% XP & MOEDAS AO CONCLUIR</span>
+        </div>
+
+        <div class="focus-layout">
+          <div class="focus-avatar-box">
+            <canvas id="focusAvatarCanvas" width="120" height="120"></canvas>
+            <div class="focus-clock" id="focusClockDisplay">25:00</div>
+            <small class="muted" id="focusStatusLabel">Pronto para iniciar seu treino focado</small>
+          </div>
+
+          <div class="focus-controls-box">
+            <label class="field-label" for="focusQuestSelect" style="margin-top:0;">Missão em foco:</label>
+            <select id="focusQuestSelect"></select>
+
+            <label class="field-label" for="focusDurationSelect">Duração da sessão:</label>
+            <select id="focusDurationSelect">
+              <option value="1">⚡ 1 Minuto (Sprint Rápido)</option>
+              <option value="15">📘 15 Minutos (Leitura / Revisão)</option>
+              <option value="25" selected>🍅 25 Minutos (Pomodoro Clássico)</option>
+              <option value="45">🔥 45 Minutos (Imersão Profunda)</option>
+            </select>
+
+            <label class="field-label" for="focusBreakModeSelect">Modo de Pausa Ativa (Descanso Recuperador):</label>
+            <select id="focusBreakModeSelect">
+              <option value="meditation">🧘 Meditação Zen no Dojo (Regenera HP/EN Passivo)</option>
+              <option value="rhythm">🎯 Mini-Game: Respiração Rítmica (Pulso de Ki Interativo)</option>
+            </select>
+
+            <div class="progress-track" style="margin: 14px 0;"><div class="progress-fill" id="focusProgressBar"></div></div>
+
+            <div class="banner-actions">
+              <button class="primary-btn" id="focusStartBtn">▶ Iniciar Foco</button>
+              <button class="stand-btn" id="focusStartBreakBtn">🍵 Pausa Ativa (5m)</button>
+              <button class="ultimate-btn hidden" id="focusPulseKiBtn">⚡ Pulso de Ki! (Mini-Game)</button>
+              <button class="secondary-btn" id="focusPauseBtn" disabled>⏸ Pausar</button>
+              <button class="danger-btn" id="focusResetBtn" disabled>⏹ Cancelar</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- HÁBITOS RECORRENTES (DAILIES) COM BÔNUS CUMULATIVO DE STREAK -->
+      <div class="panel">
+        <div class="panel-heading">
+          <div>
+            <h3>🔥 Hábitos Recorrentes (Dailies & Streak)</h3>
+            <small class="muted">Cada dia seguido aumenta em +5% as recompensas (até +150%). Cristais de Gelo protegem sua sequência se você faltar 1 dia.</small>
+          </div>
+          <div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap;">
+            <span class="rarity-badge rarity-rare" id="streakFreezeBadge" title="Protege automaticamente sua sequência caso falte 1 dia. Compre mais na Loja!">🧊 1/5 Escudo(s)</span>
+            <span class="rarity-badge rarity-epic" id="dailyStreakAuraBadge">🛡️ Aura de Consistência: 0%</span>
+          </div>
+        </div>
+
+        <div class="custom-quest-form" style="margin-bottom:14px;">
+          <input id="newDailyTitle" maxlength="60" placeholder="Novo hábito diário (ex: Beber 2L de água, Estudar 30m)">
+          <select id="newDailyCategory">
+            <option value="health">💧 Saúde (+HP & Vitalidade)</option>
+            <option value="study">📘 Estudo (+Energia & Foco)</option>
+            <option value="fitness">💪 Treino Físico (+Ataque)</option>
+            <option value="mind">🧘 Mente (+Defesa & Calma)</option>
+          </select>
+          <select id="newDailySchedule">
+            <option value="all">📅 Todos os dias</option>
+            <option value="weekdays">💼 Seg a Sex</option>
+            <option value="weekends">🌴 Fim de Semana</option>
+          </select>
+          <button class="primary-btn" id="addDailyBtn">Adicionar Hábito +</button>
+        </div>
+
+        <div id="dailiesList" class="quest-list"></div>
+      </div>
+
+      <!-- PAINEL DE ESTATÍSTICAS E GRÁFICOS DE PRODUTIVIDADE -->
+      <div class="panel">
+        <div class="panel-heading">
+          <div>
+            <h3>📊 Painel de Estatísticas & Horas Focadas</h3>
+            <small class="muted">Monitoramento dos últimos 7 dias: minutos focados, tarefas concluídas e dia mais produtivo.</small>
+          </div>
+          <span class="tag" id="mostProductiveDayBadge">🏆 Dia Mais Produtivo: Calculando...</span>
+        </div>
+
+        <div class="quest-summary" style="margin-bottom:14px;">
+          <div><strong id="statTotalFocusHours">0.0h</strong><small>Horas Focadas</small></div>
+          <div><strong id="statHabitConsistency">0%</strong><small>Consistência Dailies</small></div>
+          <div><strong id="statBestDailyStreak">0 dias</strong><small>Maior Streak de Hábito</small></div>
+          <div><strong id="statPotionsBrewed">0</strong><small>Poções Alquímicas</small></div>
+        </div>
+
+        <div class="battle-canvas-wrap" style="padding:10px;">
+          <canvas id="productivityChartCanvas" width="760" height="210"></canvas>
+        </div>
+      </div>
+
+      <div class="panel">
+        <div class="panel-heading">
+          <div><span class="eyebrow">PROGRESSO DO DIA</span><h3>Barra de Conclusão Diária</h3></div>
+          <span class="tag" id="dailyBarBadge">0% CONCLUÍDO</span>
+        </div>
+        <div class="progress-track"><div class="progress-fill" id="questsDailyProgressBar"></div></div>
+        <p class="muted" id="dailyBonusHint" style="margin-top:10px;">Complete todas as missões diárias para receber um Bônus Diário de +50 XP, +1 Giro de Classe e +2 Gemas!</p>
+      </div>
+
+      <div class="panel">
+        <div class="panel-heading">
+          <h3>Criar ou editar missão personalizada</h3>
+          <span class="tag" id="questFormModeTag">NOVA MISSÃO</span>
+        </div>
+        <div class="custom-quest-form">
+          <input id="newQuestName" maxlength="60" placeholder="Ex: Estudar matemática por 30 minutos">
+          <select id="newQuestDifficulty">
+            <option value="easy">Fácil — 20 XP • 8 🪙</option>
+            <option value="medium">Média — 40 XP • 15 🪙</option>
+            <option value="hard">Difícil — 70 XP • 25 🪙</option>
+            <option value="epic">Épica — 100 XP • 40 🪙 • 1 💎</option>
+          </select>
+          <button class="primary-btn" id="addQuest">Adicionar missão +</button>
+          <button class="secondary-btn hidden" id="cancelEditQuest">Cancelar</button>
+        </div>
+      </div>
+
+      <div class="panel">
+        <div class="panel-heading">
+          <h3>Missões diárias e personalizadas</h3>
+          <span class="tag">RENOVAÇÃO DIÁRIA</span>
+        </div>
+        <div id="questList" class="quest-list"></div>
+      </div>
+
+      <!-- CALENDÁRIO VISUAL DE CONSISTÊNCIA (HEATMAP) -->
+      <div class="panel">
+        <div class="panel-heading">
+          <div>
+            <span class="eyebrow">PAINEL DE EVOLUÇÃO REAL</span>
+            <h3>📅 Mapa de Consistência (Últimos 28 Dias)</h3>
+          </div>
+          <span class="tag">HISTÓRICO DE ATIVIDADE</span>
+        </div>
+        <div class="quest-summary" id="consistencyStatsBar" style="margin-bottom:14px;">
+          <div><strong id="bestStreakStat">0 dias</strong><small>Maior Sequência (Recorde)</small></div>
+          <div><strong id="focusMinutesStat">0 min</strong><small>Tempo Focado (Pomodoro)</small></div>
+          <div><strong id="activeDaysStat">0 dias</strong><small>Dias Ativos nos últimos 28d</small></div>
+          <div><strong id="avgDailyStat">0.0</strong><small>Média de Missões / Dia Ativo</small></div>
+        </div>
+        <div class="heatmap-grid" id="heatmapGrid"></div>
+      </div>
+
+      <div class="content-grid">
+        <div class="panel">
+          <div class="panel-heading">
+            <div><span class="eyebrow">METAS DE LONGO PRAZO</span><h3>Desafios Semanais e Mensais</h3></div>
+            <span class="tag">ESPECIAIS</span>
+          </div>
+          <div id="challengesList" class="quest-list"></div>
+        </div>
+
+        <div class="panel">
+          <div class="panel-heading">
+            <div><span class="eyebrow">MISSÕES DOS MESTRES</span><h3>Missões de NPCs (Mapa 2D)</h3></div>
+            <button class="text-btn" data-goto="map">Ir ao Mapa →</button>
+          </div>
+          <div id="npcQuestsList" class="quest-list"></div>
+        </div>
+      </div>
+
+      <div class="panel">
+        <div class="panel-heading">
+          <div><span class="eyebrow">REGISTRO DE ATIVIDADES</span><h3>Histórico de missões concluídas</h3></div>
+          <span class="tag" id="historyCountTag">0 REGISTROS</span>
+        </div>
+        <div id="questHistoryList" class="history-list"></div>
+      </div>
+    </section>
+
+    <!-- HABILIDADES -->
+    <section class="page" id="page-skills">
+      <div class="section-intro">
+        <span class="eyebrow">ÁRVORE DE HABILIDADES E PODERES DE ANIME (INCLUINDO JOJO)</span>
+        <h2>Habilidades de anime</h2>
+        <p>Desbloqueie técnicas exclusivas (incluindo Hamon, Rajada Ora Ora, Parar o Tempo e Explosão Killer Queen) com animações próprias e evolua-as até o Nível 5!</p>
+      </div>
+
+      <div class="panel">
+        <div class="panel-heading">
+          <h3>Habilidades equipadas (Slots de Combate & Mapa)</h3>
+          <span class="tag">MÁXIMO 4 SLOTS</span>
+        </div>
+        <div id="equippedSkills" class="equipped-grid"></div>
+      </div>
+
+      <div class="filter-bar" id="skillFilterBar"></div>
+      <div id="skillsList" class="skills-grid"></div>
+    </section>
+
+    <!-- INVENTÁRIO, FORJA E LOJA -->
+    <section class="page" id="page-inventory">
+      <div class="section-intro">
+        <span class="eyebrow">EQUIPAMENTOS, FORJA DIMENSIONAL E COMÉRCIO</span>
+        <h2>Inventário, Forja & Loja</h2>
+        <p>Equipe armas, trajes e acessórios raros, refine seus equipamentos de +1 até +10 na Forja Dimensional e adquira Flechas Requiem e relíquias lendárias!</p>
+      </div>
+
+      <div class="panel">
+        <div class="panel-heading">
+          <h3>Equipamentos em Uso</h3>
+          <span class="tag">BÔNUS ATIVOS NO PERSONAGEM</span>
+        </div>
+        <div class="equipped-gear-grid" id="equippedGearGrid"></div>
+      </div>
+
+      <!-- FORJA DIMENSIONAL -->
+      <div class="panel">
+        <div class="panel-heading">
+          <div>
+            <span class="eyebrow">REFINAMENTO DE EQUIPAMENTOS (+1 A +10)</span>
+            <h3>🔨 Forja Dimensional</h3>
+          </div>
+          <span class="tag">+15% ATRIBUTOS POR NÍVEL DE FORJA</span>
+        </div>
+        <div id="forgeList" class="skills-grid"></div>
+      </div>
+
+      <div class="panel">
+        <div class="panel-heading">
+          <div><span class="eyebrow">MOCHILA DO AVENTUREIRO</span><h3>Seus Itens e Equipamentos</h3></div>
+          <span class="tag" id="inventoryCountTag">0 ITENS</span>
+        </div>
+        <div id="inventoryList" class="inventory-grid"></div>
+      </div>
+
+      <div class="panel">
+        <div class="panel-heading">
+          <div><span class="eyebrow">MERCADO INTERDIMENSIONAL</span><h3>Loja de Equipamentos e Itens</h3></div>
+          <span class="tag">MOEDAS 🪙 & GEMAS 💎</span>
+        </div>
+        <div id="shopList" class="skills-grid"></div>
+      </div>
+    </section>
+
+    <!-- ANIMES -->
+    <section class="page" id="page-anime">
+      <div class="section-intro">
+        <span class="eyebrow">COLEÇÃO DO MULTIVERSO (INCLUINDO JOJO'S BIZARRE ADVENTURE)</span>
+        <h2>Universos de anime</h2>
+        <p>Acompanhe seu domínio sobre cada universo: habilidades desbloqueadas, regiões visitadas e chefes derrotados.</p>
+      </div>
+      <div id="animeList" class="anime-grid"></div>
+    </section>
+
+    <!-- CONQUISTAS -->
+    <section class="page" id="page-achievements">
+      <div class="section-intro">
+        <span class="eyebrow">MARCOS DA JORNADA & MEDALHAS</span>
+        <h2>Conquistas e Coleção</h2>
+        <p>Desbloqueie medalhas cumprindo marcos de produtividade, foco, Stands, classes, exploração e combate.</p>
+      </div>
+      <div class="quest-summary" id="achievementSummary"></div>
+      <div id="achievementsList" class="achievement-list"></div>
+    </section>
+
+    <!-- CONFIGURAÇÕES -->
+    <section class="page" id="page-settings">
+      <div class="section-intro">
+        <span class="eyebrow">SISTEMA, ÁUDIO, PWA E DADOS</span>
+        <h2>Configurações</h2>
+        <p>Ajuste efeitos sonoros, música ambiente, ciclo de dia/noite, tutorial e gerencie seu salvamento.</p>
+      </div>
+
+      <div class="content-grid">
+        <div class="panel settings-panel">
+          <h3>Áudio e Ambiente</h3>
+          <p class="muted">Sons e música sintetizados em tempo real para cada mundo (Web Audio API).</p>
+
+          <label class="field-label" for="sfxVolume">Volume dos Efeitos Sonoros (SFX): <span id="sfxVolLabel">70%</span></label>
+          <input type="range" id="sfxVolume" min="0" max="100" value="70">
+
+          <label class="field-label" for="bgmVolume">Volume da Música Ambiente (BGM): <span id="bgmVolLabel">40%</span></label>
+          <input type="range" id="bgmVolume" min="0" max="100" value="40">
+
+          <div class="settings-btn-row">
+            <button class="secondary-btn" id="toggleBgmBtn">🎵 Ativar/Pausar Música Ambiente</button>
+            <button class="secondary-btn" id="openTutorialBtn">📖 Ver Tutorial do Jogo</button>
+          </div>
+
+          <label class="field-label" for="timeModeSelect">Modo do Ciclo Dia e Noite</label>
+          <select id="timeModeSelect">
+            <option value="auto">Automático (Baseado na hora real)</option>
+            <option value="day">Sempre Dia (Manhã/Tarde)</option>
+            <option value="sunset">Sempre Entardecer</option>
+            <option value="night">Sempre Noite Estrelada</option>
+          </select>
+
+          <label class="field-label" style="margin-top:14px;">🎨 Temas Visuais de Universos de Anime</label>
+          <div class="anime-presets-bar" id="themeSelectorGrid">
+            <button type="button" class="secondary-btn theme-select-btn" data-theme="default_shonen">🔥 Shonen Clássico</button>
+            <button type="button" class="secondary-btn theme-select-btn" data-theme="morioh_pop">💎 JoJo Morioh Pop</button>
+            <button type="button" class="secondary-btn theme-select-btn" data-theme="infinite_castle">🗡️ Castelo Infinito</button>
+            <button type="button" class="secondary-btn theme-select-btn" data-theme="domain_void">🤞 Vazio Infinito</button>
+            <button type="button" class="secondary-btn theme-select-btn" data-theme="leaf_village">🍥 Vila da Folha</button>
+          </div>
+        </div>
+
+        <div class="panel settings-panel">
+          <h3>Salvar e Restaurar Progresso</h3>
+          <p class="muted">Seu progresso (Classes, Stands, Dojo e Equipamentos) é salvo automaticamente com até 3 cópias de segurança locais.</p>
+          <div class="settings-btn-row">
+            <button class="primary-btn" id="exportSave">⬇ Exportar salvamento (.json)</button>
+            <label class="secondary-btn import-label">⬆ Importar salvamento<input type="file" id="importSave" accept=".json,application/json"></label>
+            <button class="secondary-btn" id="restoreBackupBtn">↩ Restaurar Backup Automático</button>
+          </div>
+          <p class="muted" id="backupStatusText" style="margin-top:10px;font-size:13px;">Nenhum backup registrado ainda.</p>
+
+          <div class="danger-zone-box">
+            <h4>Zona de Perigo</h4>
+            <p class="muted">Apaga todo o progresso salvo neste navegador e reinicia a jornada do nível 1.</p>
+            <button class="danger-btn" id="resetGame">Reiniciar progresso</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer>ANIME LIFE RPG <span>•</span> JOJO, STANDS, ROLETA DE CLASSES & EVOLUÇÃO NA VIDA REAL</footer>
+  </main>
+</div>
+
+<!-- MODAL DE DIÁLOGO DE NPC (RPG CLÁSSICO) -->
+<div id="npcDialogModal" class="modal-overlay hidden">
+  <div class="modal-card npc-dialog-card">
+    <div class="npc-dialog-header">
+      <div class="npc-portrait-frame">
+        <canvas id="npcDialogCanvas" width="96" height="96"></canvas>
+      </div>
+      <div>
+        <span class="eyebrow" id="npcDialogZone">VILA INICIAL</span>
+        <h2 id="npcDialogName" style="margin:4px 0;">Mestre Ren</h2>
+        <span class="tag" id="npcDialogRole">MESTRE GUARDIÃO</span>
+      </div>
+    </div>
+    <p class="npc-speech-box" id="npcDialogText">Bem-vindo, jovem aventureiro!</p>
+    <div class="npc-dialog-actions">
+      <button class="primary-btn" id="npcBtnQuest">📜 Missão do Mestre</button>
+      <button class="secondary-btn" id="npcBtnTrain">🥋 Treinar com Mestre (30 🪙 → +45 XP)</button>
+      <button class="secondary-btn" id="npcBtnLore">💡 Sabedoria do Universo</button>
+      <button class="secondary-btn" id="npcBtnClose">👋 Até logo</button>
+    </div>
+  </div>
+</div>
+
+<!-- MODAL DE TUTORIAL -->
+<div id="tutorialModal" class="modal-overlay hidden">
+  <div class="modal-card">
+    <span class="eyebrow">BEM-VINDO AO MULTIVERSO</span>
+    <h2>Guia Rápido — Anime Life RPG</h2>
+    <div class="tutorial-steps">
+      <div class="tutorial-step">
+        <span class="step-num">1</span>
+        <div>
+          <strong>🎰 Roleta de Classes (7 Raridades) & 👻 Stands de JoJo</strong>
+          <p>Acesse a aba <em>Classes & Stands</em> para girar a roleta de classes (Comum a Secreta) e usar a <em>Flecha Requiem</em> para despertar Stands como Star Platinum, The World e Killer Queen!</p>
+        </div>
+      </div>
+      <div class="tutorial-step">
+        <span class="step-num">2</span>
+        <div>
+          <strong>🏯 Dojo de Treinamento Ativo & ⏱️ Foco Pomodoro</strong>
+          <p>Treine Força, Defesa, Velocidade, Energia e Habilidades no <em>Dojo Dimensional</em>, golpeie os alvos e use o <em>Pomodoro RPG</em> nas suas tarefas reais.</p>
+        </div>
+      </div>
+      <div class="tutorial-step">
+        <span class="step-num">3</span>
+        <div>
+          <strong>🗺️ 11 Mundos Exploráveis & 👑 Chefes Multi-Fase</strong>
+          <p>Viaje da Vila Ninja até o Cairo Bizarro, Central City e Shiganshina! Enfrente Chefes com 2 fases de combate, Masmorras por ondas e drops lendários.</p>
+        </div>
+      </div>
+    </div>
+    <button class="primary-btn full-btn" id="closeTutorialBtn">Começar Aventura! ✦</button>
+  </div>
+</div>
+
+<div id="toast" class="toast"></div>
+<script src="script.js"></script>
+</body>
+</html>
